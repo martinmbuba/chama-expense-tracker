@@ -1,0 +1,127 @@
+# 💰 Chama Expense Tracker
+
+The **Chama Expense Tracker** is a simple web application that helps users manage group contributions (Chamas), record expenses, calculate balances, and track individual member activity. It allows adding contributions with descriptions, logging expenses, searching for members, and removing entries — all displayed in a clean, interactive interface.
+
+## 🖼️ Preview
+
+![App Screenshot](https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1350&q=80)
+
+## ✨ Features
+
+- 📥 Add member contributions with descriptions
+- 💸 Record expenses that deduct from the total balance
+- 📊 Real-time calculation of total contributions, total expenses, and balance
+- 🧍 View all contributing members
+- 🔍 Search for a member by name
+- ❌ Remove a member or delete an expense
+- 🌄 Stylish, responsive UI with background image using Tailwind CSS
+- 🔄 Data persists using JSON server (`db.json`)
+
+---
+
+## ⚙️ Technologies Used
+
+- HTML5
+- CSS (Tailwind CSS)
+- JavaScript (ES6)
+- JSON Server (for mock backend)
+
+---
+
+## 📁 Project Structure
+
+chama-expense-tracker/
+│
+├── db.json # JSON Server data file
+├── index.html # Main HTML UI
+├── src/
+│ └── index.js # Main JavaScript logic
+├── README.md # You're reading it!
+
+yaml
+Copy code
+
+---
+
+## 🚀 Setup Instructions
+
+1. **Clone the Repository**
+
+```bash
+git clone https://github.com/your-username/chama-expense-tracker.git
+cd chama-expense-tracker
+Install JSON Server (if not already installed)
+
+bash
+Copy code
+npm install -g json-server
+Start the JSON Server
+
+bash
+Copy code
+json-server --watch db.json
+Open the App
+
+Open index.html with Live Server (VS Code extension) or directly in a browser.
+
+Make sure JSON Server is running on http://localhost:3000.
+
+## 🗃️ db.json Structure
+json
+Copy code
+{
+  "members": [
+    {
+      "id": 1,
+      "name": "Jane",
+      "amount": 500,
+      "description": "Monthly savings"
+    }
+  ],
+  "expenses": [
+    {
+      "id": 1,
+      "description": "Group trip to Naivasha",
+      "amount": 300
+    }
+  ]
+}
+## 🔍 How Search Works
+Enter a member's name in the top right search input.
+
+Click the Search button to filter the displayed members.
+
+It’s case-insensitive and partial matches work.
+
+To clear the filter, empty the input and click Search again.
+
+✏️ Customization Tips
+💡 You can change the background image in index.html by editing the background-image inline style.
+
+💰 You can modify currency display by replacing KES in index.js.
+
+📌 To-Do / Future Improvements
+Add loan tracking
+
+Add contribution frequency (monthly, weekly)
+
+Export reports to PDF or Excel
+
+Authentication for admins
+
+🙋‍♂️ Contact
+Martin Mbuba
+📧 martinmbuba4@gmail.com
+📱 +254 701 274 732
+🌐 GitHub
+
+📝 License
+This project is open-source and free to use under the MIT License.
+
+
+
+
+
+
+
+
