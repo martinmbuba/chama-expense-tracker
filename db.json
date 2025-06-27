@@ -11,14 +11,15 @@
       "name": "Morris Njue",
       "amount": 100000,
       "description": "contribution"
+    },
+    {
+      "id": "9ea5",
+      "name": "martin",
+      "amount": 4555,
+      "description": "savings"
     }
   ],
   "expenses": [
-    {
-      "id": "7e48",
-      "description": "event",
-      "amount": 455
-    },
     {
       "id": "1d18",
       "description": "travel expenses",
