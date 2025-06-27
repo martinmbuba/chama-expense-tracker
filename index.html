@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-cover bg-center bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1350&q=80');">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chama Expense Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen text-white">
+
+  <!-- Header -->
+  <header class="bg-green-900 bg-opacity-80 p-4 shadow">
+    <h1 class="text-2xl font-bold text-center">Jisaidie Chama Expense Tracker</h1>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-4xl mx-auto p-6 mt-6 rounded shadow bg-black bg-opacity-40 backdrop-blur">
+
+    <!-- Add Contribution -->
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-4">Add Member Contribution</h2>
+      <form id="contribution-form" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <input type="text" id="member" placeholder="Member Name" class="border p-2 rounded text-black" required />
+        <input type="number" id="amount" placeholder="Amount" class="border p-2 rounded text-black" required />
+        <input type="text" id="description" placeholder="Description" class="border p-2 rounded text-black" required />
+        <button type="submit" class="col-span-1 md:col-span-3 bg-green-700 hover:bg-green-800 text-white py-2 rounded mt-2">
+          Add Contribution
+        </button>
+      </form>
+    </section>
+
+    <!-- Contribution List -->
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-4">Members & Contributions</h2>
+      <ul id="member-list" class="space-y-3"></ul>
+    </section>
+
+    <!-- Expenses -->
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-4">Add Expense</h2>
+      <form id="expense-form" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <input type="text" id="expense-desc" placeholder="Expense Description" class="border p-2 rounded text-black" required />
+        <input type="number" id="expense-amount" placeholder="Amount" class="border p-2 rounded text-black" required />
+        <button type="submit" class="col-span-1 md:col-span-3 bg-red-700 hover:bg-red-800 text-white py-2 rounded mt-2">
+          Add Expense
+        </button>
+      </form>
+
+      <ul id="expense-list" class="space-y-3 mt-4"></ul>
+    </section>
+
+    <!-- Summary Section -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="p-4 border rounded bg-green-800 bg-opacity-70">
+        <p>Total Contributions</p>
+        <p id="total-contributions" class="text-2xl font-bold">KES 0</p>
+      </div>
+      <div class="p-4 border rounded bg-red-800 bg-opacity-70">
+        <p>Total Expenses</p>
+        <p id="total-expenses" class="text-2xl font-bold">KES 0</p>
+      </div>
+      <div class="p-4 border rounded bg-blue-800 bg-opacity-70">
+        <p>Balance</p>
+        <p id="balance" class="text-2xl font-bold">KES 0</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="./src/index.js"></script>
+</body>
+</html>
