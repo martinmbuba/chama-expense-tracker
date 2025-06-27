@@ -5,6 +5,12 @@
       "name": "diana mbuba",
       "amount": 20000,
       "description": "savings"
+    },
+    {
+      "id": "5a73",
+      "name": "Morris Njue",
+      "amount": 100000,
+      "description": "contribution"
     }
   ],
   "expenses": [
@@ -17,6 +23,11 @@
       "id": "1d18",
       "description": "travel expenses",
       "amount": 14000
+    },
+    {
+      "id": "9b23",
+      "description": "loan to martin",
+      "amount": 23400
     }
   ]
 }
