@@ -1,5 +1,49 @@
 // Wait for the DOM to finish loading
 document.addEventListener('DOMContentLoaded', () => {
+// Search Functionality
+const searchBtn = document.getElementById('search-btn');
+const searchInput = document.getElementById('search-input');
+
+searchBtn.addEventListener('click', () => {
+  const query = searchInput.value.trim().toLowerCase();
+  
+  if (!query) {
+    renderMembers(); // Show all if search is empty
+    return;
+  }
+
+  const filteredMembers = members.filter(m =>
+    m.name.toLowerCase().includes(query)
+  );
+
+  // Display only matching members
+  renderFilteredMembers(filteredMembers);
+});
+
+// Helper to render only filtered results
+function renderFilteredMembers(filtered) {
+  memberList.innerHTML = '';
+  filtered.forEach(m => {
+    const li = document.createElement('li');
+    li.className = 'bg-white bg-opacity-20 p-3 rounded flex justify-between items-center';
+    li.innerHTML = `
+      <div>
+        <p class="font-bold">${m.name} - KES ${m.amount.toFixed(2)}</p>
+        <p class="text-sm text-gray-200 italic">${m.description}</p>
+      </div>
+      <button data-id="${m.id}" class="delete-member text-red-400 hover:text-red-700">Remove</button>
+    `;
+    memberList.appendChild(li);
+  });
+
+  // Re-add delete functionality for filtered view
+  document.querySelectorAll('.delete-member').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-id');
+      deleteMember(id);
+    });
+  });
+}
 
   // Get references to important elements in the DOM
   const contributionForm = document.getElementById('contribution-form');
