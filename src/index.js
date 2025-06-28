@@ -117,34 +117,45 @@ function renderFilteredMembers(filtered) {
   });
 
   // Handle new expense form submit
-  expenseForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+  // Handle new expense form submit
+expenseForm.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-    // Get input values
-    const description = document.getElementById('expense-desc').value.trim();
-    const amount = parseFloat(document.getElementById('expense-amount').value);
+  // Get input values
+  const description = document.getElementById('expense-desc').value.trim();
+  const amount = parseFloat(document.getElementById('expense-amount').value);
 
-    // Validate input
-    if (!description || isNaN(amount)) {
-      return alert('Fill in all fields correctly');
-    }
+  // Validate input
+  if (!description || isNaN(amount)) {
+    return alert('Fill in all fields correctly');
+  }
 
-    const newExpense = { description, amount };
+  // Calculate current balance
+  const totalContrib = members.reduce((sum, m) => sum + m.amount, 0);
+  const totalExp = expenses.reduce((sum, e) => sum + e.amount, 0);
+  const currentBalance = totalContrib - totalExp;
 
-    // Send to server
-    fetch(`${apiBase}/expenses`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newExpense)
-    })
-      .then(res => res.json())
-      .then(data => {
-        expenses.push(data);      // Add new expense to list
-        renderExpenses();         // Re-render expense list
-        updateSummary();          // Recalculate totals and balance
-        expenseForm.reset();      // Clear form
-      });
-  });
+  // Check if there's enough balance
+  if (amount > currentBalance) {
+    return alert('Not enough funds for this expense!');
+  }
+
+  const newExpense = { description, amount };
+
+  // Send to server
+  fetch(`${apiBase}/expenses`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newExpense)
+  })
+    .then(res => res.json())
+    .then(data => {
+      expenses.push(data);      // Add new expense to list
+      renderExpenses();         // Re-render expense list
+      updateSummary();          // Recalculate totals and balance
+      expenseForm.reset();      // Clear form
+    });
+});
 
 
 
