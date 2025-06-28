@@ -128,23 +128,32 @@ function renderFilteredMembers(filtered) {
     if (!description || isNaN(amount)) {
       return alert('Fill in all fields correctly');
     }
+const totalContrib = members.reduce((sum, m) => sum + m.amount, 0);
+const totalExp = expenses.reduce((sum, e) => sum + e.amount, 0);
+const currentBalance = totalContrib - totalExp;
 
-    const newExpense = { description, amount };
+if (amount > currentBalance) {
+  alert('Not enough funds for this expense!');
+  return; // Stop further execution
+}
 
-    // Send to server
-    fetch(`${apiBase}/expenses`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newExpense)
-    })
-      .then(res => res.json())
-      .then(data => {
-        expenses.push(data);      // Add new expense to list
-        renderExpenses();         // Re-render expense list
-        updateSummary();          // Recalculate totals and balance
-        expenseForm.reset();      // Clear form
-      });
-  });
+const newExpense = { description, amount };
+
+// Send to server
+fetch(`${apiBase}/expenses`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(newExpense)
+})
+.then(res => res.json())
+.then(data => {
+  expenses.push(data);
+  renderExpenses();
+  updateSummary();
+  expenseForm.reset();
+});
+
+   
 
   // Display the list of members
   function renderMembers() {
