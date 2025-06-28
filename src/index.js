@@ -55,7 +55,7 @@ function renderFilteredMembers(filtered) {
   const balanceEl = document.getElementById('balance');
 
   // Base URL for the JSON server
-  const apiBase = 'https://chama-expense-tracker-5.onrender.com/';
+  const apiBase = 'https://json-server-rff0.onrender.com';
 
   // Store members and expenses data
   let members = [];
